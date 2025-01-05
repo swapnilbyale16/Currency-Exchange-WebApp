@@ -1,0 +1,10 @@
+let express=require("express")
+const { add, login,islogin,isadmin } = require("../controler/usercont")
+const {addt, tdata, tpm} = require("../controler/taskcont")
+let rt=new express.Router()
+rt.post("/reg",add)
+rt.post("/login",login)
+rt.post("/addtask",islogin,addt)
+rt.get("/task",islogin,isadmin,tdata)
+rt.get("/task/:uid",islogin,tpm)
+module.exports=rt
